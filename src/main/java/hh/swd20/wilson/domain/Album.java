@@ -14,6 +14,17 @@ public class Album {
 	
 	
 	public Album () {}
+	
+	
+
+
+	public Album(String title, String collaborator) {
+		super();
+		this.title = title;
+		this.collaborator = collaborator;
+	}
+
+
 
 
 	public long getId() {

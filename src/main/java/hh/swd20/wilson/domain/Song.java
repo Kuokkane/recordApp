@@ -5,14 +5,14 @@ public class Song {
 	
 	private long songId;
 	private String songName;
-	private long songLength;
+	private double songLength;
 	
 	//@JoinColum(name = "albumId")
 	//private Album album;
 	
 	public Song() {}
 
-	public Song(String songName, long songLength/*, Album, album*/) {
+	public Song(String songName, double songLength/*, Album, album*/) {
 		super();
 		this.songName = songName;
 		this.songLength = songLength;
@@ -35,11 +35,11 @@ public class Song {
 		this.songName = songName;
 	}
 
-	public long getSongLength() {
+	public double getSongLength() {
 		return songLength;
 	}
 
-	public void setSongLength(long songLength) {
+	public void setSongLength(double songLength) {
 		this.songLength = songLength;
 	}
 

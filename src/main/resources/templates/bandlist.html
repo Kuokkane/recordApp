@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <title>Books list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-
+	<h1>Projects</h1>
+	<div sec:authorize="hasRole('USER')">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+    <table>
+		<tr>
+		    <th>Name of the band</th>
+		    <th>Member count</th>
+		    <th>Year founded</th>
+		    <th>Year disbanded</th>
+		    <th>Labels</th>
+		    
+		    <th sec:authorize="hasRole('USER')"> </th>
+		</tr>  
+    	<tr th:each = "band : ${bands}">
+    		<td th:text="${band.bandName}"></td>
+    		<td th:text="${book.memberCount}"></td>
+    		<td th:text="${book.foundYear}"></td>
+    		<td th:text="${book.endYear}"></td>
+    	
+			<td sec:authorize="hasAuthority  ('USER')"><a th:href="@{/delete/{id}(id=${band.bandId})}" class="btn btn-xs btn-danger">Delete</a></td>  			
+			<td><a th:href="@{/editband/{id}(id=${band.bandId})}">Edit</a></td>      		
+    	</tr>
+     </table>
+	 <a href="/addband">Add project</a>    	
 </body>
 </html>

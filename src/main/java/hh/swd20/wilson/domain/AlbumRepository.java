@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface AlbumRepository extends CrudRepository<Band, Long> {
+public interface AlbumRepository extends CrudRepository<Album, Long> {
 	
-	List<Band> findByBandName(String bandName);
+	List<Album> findByTitle(String title);
 
 }

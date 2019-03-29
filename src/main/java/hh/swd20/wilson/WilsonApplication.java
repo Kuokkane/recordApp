@@ -23,11 +23,13 @@ public class WilsonApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WilsonApplication.class, args);
 	}
-	
+
 	@Bean
-	public CommandLineRunner WilsonDemo (BandRepository brepository, GenreRepository grepository, AlbumRepository arepository, SongRepository srepository){
+	public CommandLineRunner WilsonDemo (BandRepository brepository, GenreRepository grepository, AlbumRepository arepository, SongRepository srepository, UserRepository urepository){
 		return (args) -> {
+			
 			log.info("Saved bands");
+			
 			Genre progressiverock = new Genre ("Progressive Rock");
 			grepository.save(progressiverock);
 			Genre psychedelicrock = new Genre("Psychedelic Rock");
@@ -40,10 +42,20 @@ public class WilsonApplication {
 			grepository.save(alternativerock);
 			
 			brepository.save(new Band("Altamont", 2, 1983, "Acid Tapes", 1984));
+			brepository.save(new Band("Porcupine Tree", 5, 1987, "Kscope, Roadrunner Records, Peaceville Records, Atlantic Records", 2010));
 			
-			arepository.save(new Album("Prayer for the soul", "Simon \"Si\" Vockings " /*, grepository.findByTitle("Psychedelic Rock").get(0)*/));
+			arepository.save(new Album("Prayer for the soul", "Simon \"Si\" Vockings "/*, grepository.findByTitle("Psychedelic Rock").get(0)*/));
+			arepository.save(new Album("The Incident", "Richard Barbieri, Colin Edwin, Gavin Harrison"));
 			
+			srepository.save(new Song ("Raven That Refused To Sing", 7.49));
+			srepository.save(new Song ("I Drive the Hearse", 6.41));
+			
+			log.info("Fetch all bands");
+			for (Band band : brepository.findAll()) {
+				log.info(band.toString());
+			}
 		};
-	}
+	
 
+}
 }

@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <title>List of songs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-
+	<h1>Songs</h1>
+	<div sec:authorize="hasRole('USER')">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+    <table>
+		<tr>
+		    <th>Name of the song</th>
+		    <th>Song length</th>
+		   
+		    
+		    <th sec:authorize="hasRole('USER')"> </th>
+		</tr>  
+    	<tr th:each = "song : ${songs}">
+    		<td th:text="${song.songName}"></td>
+    		<td th:text="${song.songLength}"></td>
+    		
+    	
+			<td sec:authorize="hasAuthority  ('USER')"><a th:href="@{/delete/{id}(id=${song.songId})}" class="btn btn-xs btn-danger">Delete</a></td>  			
+			<td><a th:href="@{/editsong/{id}(id=${song.songId})}">Edit</a></td>      		
+    	</tr>
+     </table>
+	 <a href="/addband">Add song</a>    	
 </body>
 </html>
