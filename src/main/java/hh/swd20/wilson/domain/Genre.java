@@ -1,7 +1,16 @@
 package hh.swd20.wilson.domain;
 
-public class Genre {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+
+@Entity
+public class Genre {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long genreId;
 	private String genreName;
 	

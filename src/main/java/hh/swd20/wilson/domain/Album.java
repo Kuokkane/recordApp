@@ -3,6 +3,7 @@ package hh.swd20.wilson.domain;
 import javax.persistence.Entity;
 
 
+
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

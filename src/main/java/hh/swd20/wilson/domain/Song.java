@@ -1,13 +1,24 @@
 package hh.swd20.wilson.domain;
 
-import javax.persistence.JoinColumn;
+import javax.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
+
+
+	
+
+@Entity
 public class Song {
 	
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long songId;
 	private String songName;
 	private double songLength;
 	
+	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "albumId")
 	private Album album;
 	

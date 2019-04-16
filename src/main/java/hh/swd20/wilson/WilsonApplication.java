@@ -34,6 +34,7 @@ public class WilsonApplication {
 			log.info("Saving data");
 			
 			Genre krautrock = new Genre ("Krautrock");
+			grepository.save(krautrock);
 			Genre progressiverock = new Genre ("Progressive Rock");
 			grepository.save(progressiverock);
 			Genre psychedelicrock = new Genre("Psychedelic Rock");
@@ -49,8 +50,8 @@ public class WilsonApplication {
 			brepository.save(new Band("Altamont", 2, 1983, "Acid Tapes", 1984));
 			brepository.save(new Band("Porcupine Tree", 5, 1987, "Kscope, Roadrunner Records, Peaceville Records, Atlantic Records", 2010));
 			
-			arepository.save(new Album("Prayer for the soul", "Simon \"Si\" Vockings ", grepository.findByTitle("Krautrock").get(0)));
-			arepository.save(new Album("The Incident", "Richard Barbieri, Colin Edwin, Gavin Harrison", grepository.findByTitle("Progressive Rock").get(0)));
+			arepository.save(new Album("Prayer for the soul", "Simon \"Si\" Vockings ", grepository.findByGenreName("Krautrock").get(0)));
+			arepository.save(new Album("The Incident", "Richard Barbieri, Colin Edwin, Gavin Harrison", grepository.findByGenreName("Progressive Rock").get(0)));
 			
 			srepository.save(new Song ("Raven That Refused To Sing", 7.49, arepository.findByTitle("Krautrock").get(0)));
 			srepository.save(new Song ("I Drive the Hearse", 6.41, arepository.findByTitle("The Incident").get(0)));

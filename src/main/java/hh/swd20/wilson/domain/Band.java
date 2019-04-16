@@ -1,13 +1,28 @@
 package hh.swd20.wilson.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Band {
 	
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long bandId;
 	private String bandName;
 	private int memberCount;
 	private int foundYear;
 	private String labelCompany;
 	private int endYear;
+	
+//	@OneToMany
+//	@JsonIgnore
+//	@JoinColumn(name = "albumId")
+//	private Album album;
 	
 	public Band() {}
 			
@@ -105,6 +120,16 @@ public class Band {
 	public void setBandName(String bandName) {
 		this.bandName = bandName;
 	}
+	
+//	public Album getAlbum() {
+//		return album;
+//	}
+//	
+//	
+//	public void setAlbum(Album album) {
+//		this.album = album;
+//	}
+
 
 
 
