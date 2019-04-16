@@ -30,10 +30,11 @@ public class Album {
 	
 
 
-	public Album(String title, String collaborator) {
+	public Album(String title, String collaborator, Genre genre) {
 		super();
 		this.title = title;
 		this.collaborator = collaborator;
+		this.genre = genre;
 	}
 
 

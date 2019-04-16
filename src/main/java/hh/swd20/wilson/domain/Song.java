@@ -1,5 +1,6 @@
 package hh.swd20.wilson.domain;
 
+import javax.persistence.JoinColumn;
 
 public class Song {
 	
@@ -7,16 +8,16 @@ public class Song {
 	private String songName;
 	private double songLength;
 	
-	//@JoinColum(name = "albumId")
-	//private Album album;
+	@JoinColumn(name = "albumId")
+	private Album album;
 	
 	public Song() {}
 
-	public Song(String songName, double songLength/*, Album, album*/) {
+	public Song(String songName, double songLength, Album album) {
 		super();
 		this.songName = songName;
 		this.songLength = songLength;
-		//this.album = album;
+		this.album = album;
 	}
 
 	public long getSongId() {
@@ -45,14 +46,14 @@ public class Song {
 
 	
 	
-//	public Album getAlbum() {
-//		return album;
-//	}
-//
-//
-//	public void setAlbum(Album album) {
-//		this.album = album;
-//	}
+	public Album getAlbum() {
+		return album;
+	}
+
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
 	
 	
 	

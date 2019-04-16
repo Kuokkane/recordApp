@@ -31,8 +31,9 @@ public class WilsonApplication {
 	public CommandLineRunner WilsonDemo (BandRepository brepository, GenreRepository grepository, AlbumRepository arepository, SongRepository srepository, UserRepository urepository){
 		return (args) -> {
 			
-			log.info("Saved bands");
+			log.info("Saving data");
 			
+			Genre krautrock = new Genre ("Krautrock");
 			Genre progressiverock = new Genre ("Progressive Rock");
 			grepository.save(progressiverock);
 			Genre psychedelicrock = new Genre("Psychedelic Rock");
@@ -44,14 +45,15 @@ public class WilsonApplication {
 			Genre alternativerock = new Genre ("Alternative Rock");
 			grepository.save(alternativerock);
 			
+			brepository.save(new Band("Steven Wilson", 1, 2009, "Kscope, Caroline International", 0));
 			brepository.save(new Band("Altamont", 2, 1983, "Acid Tapes", 1984));
 			brepository.save(new Band("Porcupine Tree", 5, 1987, "Kscope, Roadrunner Records, Peaceville Records, Atlantic Records", 2010));
 			
-			arepository.save(new Album("Prayer for the soul", "Simon \"Si\" Vockings "/*, grepository.findByTitle("Psychedelic Rock").get(0)*/));
-			arepository.save(new Album("The Incident", "Richard Barbieri, Colin Edwin, Gavin Harrison"));
+			arepository.save(new Album("Prayer for the soul", "Simon \"Si\" Vockings ", grepository.findByTitle("Krautrock").get(0)));
+			arepository.save(new Album("The Incident", "Richard Barbieri, Colin Edwin, Gavin Harrison", grepository.findByTitle("Progressive Rock").get(0)));
 			
-			srepository.save(new Song ("Raven That Refused To Sing", 7.49));
-			srepository.save(new Song ("I Drive the Hearse", 6.41));
+			srepository.save(new Song ("Raven That Refused To Sing", 7.49, arepository.findByTitle("Krautrock").get(0)));
+			srepository.save(new Song ("I Drive the Hearse", 6.41, arepository.findByTitle("The Incident").get(0)));
 			
 			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
 			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");

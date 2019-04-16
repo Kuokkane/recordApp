@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import hh.swd20.wilson.domain.Band;
 import hh.swd20.wilson.domain.BandRepository;
 import hh.swd20.wilson.domain.GenreRepository;
+import hh.swd20.wilson.domain.UserRepository;
 
 @Controller
 public class WilsonController {
@@ -25,6 +26,8 @@ public class WilsonController {
 	
 	@Autowired
 	private GenreRepository grepository; 
+	
+	
 	
 	
 	

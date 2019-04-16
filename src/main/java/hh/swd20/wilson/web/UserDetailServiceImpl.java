@@ -1,7 +1,4 @@
-package hh.swd20.wilson.web;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,21 +9,20 @@ import hh.swd20.wilson.domain.User;
 import hh.swd20.wilson.domain.UserRepository;
 
 @Service
-public class UserDetailServiceImpl implements UserDetailsService {
-	
-	private UserRepository repository;
-	
+public class UserDetailServiceImpl implements UserDetailsService  {
+	private final UserRepository repository;
+
 	@Autowired
-	public UserDetailServiceImpl(UserRepository urepository ) {
-		this.repository = urepository;
+	public UserDetailServiceImpl(UserRepository userRepository) {
+		this.repository = userRepository;
 	}
-	
-	@Override
-	public UserDetails loadUserByUsername(String user) throws UsernameNotFoundException {
-		
-		User curruser = repository.findByUsername(user);
-		UserDetails userDetail = new org.springframework.security.core.userdetails.User(user, curruser.getPasswordHash(),
-			AuthorityUtils.createAuthorityList(curruser.getRole()));
-		return userDetail;
-	}
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
+    {   
+    	User currentUser = repository.findByUsername(username);
+        UserDetails userDetails = new org.springframework.security.core.userdetails.User(username, currentUser.getPasswordHash(), 
+        		AuthorityUtils.createAuthorityList(currentUser.getRole()));
+        return userDetails;
+    }   
 }

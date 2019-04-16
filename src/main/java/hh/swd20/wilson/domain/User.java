@@ -1,15 +1,10 @@
 package hh.swd20.wilson.domain;
 
-
-
-
 import javax.persistence.*;
-
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, updatable = false)
@@ -25,7 +20,6 @@ public class User {
 	private String role;
 	
 	public User() {
-		
 	}
 
 	public User(String username, String passwordHash, String role) {
@@ -58,7 +52,7 @@ public class User {
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}
-
+ 
 	public String getRole() {
 		return role;
 	}
@@ -68,5 +62,4 @@ public class User {
 	}
 	
 	
-
 }
