@@ -1,16 +1,28 @@
 package hh.swd20.wilson.domain;
 
+import javax.persistence.Entity;
+
+
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Album {
-	//@Id
-	//@GeneratedValue(Strategy=GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long albumId;
 	private String title;
 	private String collaborator;
 	
-	//@ManyToOne tai @OneToMany
-	//JsonIgnore
-	//@JoinColumn(name = "genreId")
-	//private Genre genre;
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "genreId")
+	private Genre genre;
 	
 	
 	public Album () {}
@@ -56,14 +68,14 @@ public class Album {
 		this.collaborator = collaborator;
 	}
 	
-	//	public Genre getGenre() {
-	//	return genre;
-	//}
-	//
-	//
-	//public void setGenre(Genre genre) {
-	//	this.genre = genre;
-	//}
+		public Genre getGenre() {
+		return genre;
+	}
+	
+	
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
 
 
 	@Override

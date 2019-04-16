@@ -1,6 +1,7 @@
-package hh.swd20.wilson;
-
+package hh.swd20.wilson.web;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,17 +14,17 @@ import hh.swd20.wilson.domain.UserRepository;
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 	
-	private final UserRepository urepository;
+	private UserRepository repository;
 	
 	@Autowired
 	public UserDetailServiceImpl(UserRepository urepository ) {
-		this.urepository = urepository;
+		this.repository = urepository;
 	}
 	
 	@Override
 	public UserDetails loadUserByUsername(String user) throws UsernameNotFoundException {
 		
-		User curruser = urepository.findByUsername(user);
+		User curruser = repository.findByUsername(user);
 		UserDetails userDetail = new org.springframework.security.core.userdetails.User(user, curruser.getPasswordHash(),
 			AuthorityUtils.createAuthorityList(curruser.getRole()));
 		return userDetail;
