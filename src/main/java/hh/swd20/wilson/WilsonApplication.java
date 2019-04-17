@@ -2,6 +2,7 @@ package hh.swd20.wilson;
 
 import org.springframework.boot.CommandLineRunner;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -53,7 +54,7 @@ public class WilsonApplication {
 			arepository.save(new Album("Prayer for the soul", "Simon \"Si\" Vockings ", grepository.findByGenreName("Krautrock").get(0)));
 			arepository.save(new Album("The Incident", "Richard Barbieri, Colin Edwin, Gavin Harrison", grepository.findByGenreName("Progressive Rock").get(0)));
 			
-			srepository.save(new Song ("Raven That Refused To Sing", 7.49, arepository.findByTitle("Krautrock").get(0)));
+			srepository.save(new Song ("Raven That Refused To Sing", 7.49, arepository.findByTitle("The Incident").get(0)));
 			srepository.save(new Song ("I Drive the Hearse", 6.41, arepository.findByTitle("The Incident").get(0)));
 			
 			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");

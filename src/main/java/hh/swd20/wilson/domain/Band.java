@@ -99,14 +99,14 @@ public class Band {
 
 
 
-	public long getId() {
+	public long getBandId() {
 		return bandId;
 	}
 
 
 
 
-	public void setId(long bandId) {
+	public void setBandId(long bandId) {
 		this.bandId = bandId;
 	}
 	

@@ -1,6 +1,7 @@
 package hh.swd20.wilson.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,6 +13,7 @@ import hh.swd20.wilson.domain.UserRepository;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService  {
+	
 	private final UserRepository repository;
 
 	@Autowired
