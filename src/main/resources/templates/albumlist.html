@@ -17,19 +17,23 @@
 		<tr>
 		    <th>Album title</th>
 		    <th>Collaborators</th>
+		   <th>Edit album</th>
 		    
 		    
 		    <th sec:authorize="hasRole('USER')"> </th>
 		</tr>  
     	<tr th:each = "album : ${albums}">
     		<td th:text="${album.title}"></td>
-    		<td th:text="${album.collaborators}"></td>
+    		<td th:text="${album.collaborator}"></td>
     	
     	
 			<td sec:authorize="hasAuthority  ('USER')"><a th:href="@{/delete/{id}(id=${album.albumId})}" class="btn btn-xs btn-danger">Delete</a></td>  			
 			<td><a th:href="@{/editalbum/{id}(id=${album.albumId})}">Edit</a></td>      		
     	</tr>
      </table>
-	 <a href="/addalbum">Add album</a>    	
+	 <a href="/addalbum">Add album</a> 
+	 	 <a href="/songlist">View song list</a>    	  
+	<a href="/bandlist">Go back</a>    	
+	  	
 </body>
 </html>

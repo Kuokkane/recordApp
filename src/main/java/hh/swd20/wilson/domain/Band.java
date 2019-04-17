@@ -12,7 +12,7 @@ public class Band {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long bandId;
+	private Long bandId;
 	private String bandName;
 	private int memberCount;
 	private int foundYear;
@@ -106,7 +106,7 @@ public class Band {
 
 
 
-	public void setBandId(long bandId) {
+	public void setId(long bandId) {
 		this.bandId = bandId;
 	}
 	

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Books list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    
+</head>
+<body>
+	<h1>Add song</h1>
+	<div>
+		<form th:object="${song}" th:action="@{save}" action="#" method="post">
+		  	<label for="songName">Name of the song</label>
+			<input type="text" id="songName" th:field="*{songName}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="songLength">Length of the song</label>
+			<input type="text" id="songLength" th:field="*{songLength}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		
+			
+    		
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

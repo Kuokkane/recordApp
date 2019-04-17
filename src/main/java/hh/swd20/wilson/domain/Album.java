@@ -41,12 +41,12 @@ public class Album {
 
 
 
-	public long getId() {
+	public long getAlbumId() {
 		return albumId;
 	}
 
 
-	public void setId(long albumId) {
+	public void setAlbumId(long albumId) {
 		this.albumId = albumId;
 	}
 
