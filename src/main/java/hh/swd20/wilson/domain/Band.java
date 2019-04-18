@@ -1,9 +1,14 @@
 package hh.swd20.wilson.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -12,19 +17,28 @@ public class Band {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long bandId;
+	private Long id;
 	private String bandName;
 	private int memberCount;
 	private int foundYear;
 	private String labelCompany;
 	private int endYear;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "band")
+	private List<Album> albums;
 //	@OneToMany
 //	@JsonIgnore
 //	@JoinColumn(name = "albumId")
 //	private Album album;
 	
-	public Band() {}
+	public Band() {
+		this.id = 0L;
+		this.bandName = null;
+		this.memberCount = 0;
+		this.foundYear = 0;
+		this.labelCompany = null;
+		this.endYear = 0;
+	}
 			
 			
 	
@@ -50,6 +64,20 @@ public class Band {
 
 	public void setMemberCount(int memberCount) {
 		this.memberCount = memberCount;
+	}
+
+
+ 
+
+	public List<Album> getAlbums() {
+		return albums;
+	}
+
+
+
+
+	public void setAlbums(List<Album> albums) {
+		this.albums = albums;
 	}
 
 
@@ -99,15 +127,15 @@ public class Band {
 
 
 
-	public long getBandId() {
-		return bandId;
+	public Long getId() {
+		return id;
 	}
 
 
 
 
-	public void setId(long bandId) {
-		this.bandId = bandId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public String getBandName() {
@@ -136,7 +164,7 @@ public class Band {
 
 	@Override
 	public String toString() {
-		return "Band [bandId=" + bandId + ", bandName=" + bandName + ", memberCount=" + memberCount + ", foundYear="
+		return "Band [id=" + id + ", bandName=" + bandName + ", memberCount=" + memberCount + ", foundYear="
 				+ foundYear + ", labelCompany=" + labelCompany + ", endYear=" + endYear + "]";
 	}
 

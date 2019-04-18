@@ -8,5 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface AlbumRepository extends CrudRepository<Album, Long> {
 	
 	List<Album> findByTitle(String title);
+	
+	List<Album> findByBand(Long id);
 
 }

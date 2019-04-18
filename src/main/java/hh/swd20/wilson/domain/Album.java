@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 
 
 
-import javax.persistence.FetchType;
+
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,8 +23,8 @@ public class Album {
 	
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name = "genreId")
-	private Genre genre;
+	@JoinColumn(name = "id")
+	private Band band;
 	
 	
 	public Album () {}
@@ -31,11 +32,11 @@ public class Album {
 	
 
 
-	public Album(String title, String collaborator, Genre genre) {
+	public Album(String title, String collaborator, Band band) {
 		super();
 		this.title = title;
 		this.collaborator = collaborator;
-		this.genre = genre;
+		this.band = band;
 	}
 
 
@@ -70,19 +71,22 @@ public class Album {
 		this.collaborator = collaborator;
 	}
 	
-		public Genre getGenre() {
-		return genre;
+		public Band getBand() {
+		return band;
 	}
 	
 	
-	public void setGenre(Genre genre) {
-		this.genre = genre;
+	public void setBand(Band band) {
+		this.band = band;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Album [albumId=" + albumId + ", title=" + title + ", collaborator=" + collaborator + "]";
+		if (this.band != null)
+		return "Album [albumId=" + albumId + ", title=" + title + ", collaborator=" + collaborator + ", band = "+ this.getBand() + "]";
+		else 
+			return "Album [albumId=" + albumId + ", title=" + title + ", collaborator=" + collaborator + "]";
 	}
 	
 	

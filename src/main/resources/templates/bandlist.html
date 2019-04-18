@@ -27,13 +27,13 @@
 		   <th sec:authorize="hasRole('ADMIN')"> </th>
 		</tr>  
     	<tr th:each = "band : ${bands}">
-    		<td th:text="${band.bandName}"></a></td>
+    		<td> <a th:text="${band.bandName}" th:href="@{/albumlist/{id}(id=@{band.id})}"></a></td>
     		<td th:text="${band.memberCount}"></td>
     		<td th:text="${band.foundYear}"></td>
     		<td th:text="${band.endYear}"></td>
     		 <td th:text="${band.labelCompany}"></td>
-    		 <td><a th:href="@{/editband/{id}(id=${band.bandId})}">Edit</a></td> 
-    		<td sec:authorize="hasAuthority  ('ADMIN')"><a th:href="@{/deleteBand/{bandId}(id=${band.bandId})}" class="btn btn-xs btn-danger">Delete</a></td>  			
+    		 <td><a th:href="@{/editband/{id}(id=${band.id})}">Edit</a></td> 
+    		<td><a th:href="@{/delete/{id}(id=${band.id})}" class="btn btn-danger">Delete</a></td>  			
 			     		
     	</tr>
      </table>

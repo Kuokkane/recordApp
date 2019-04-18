@@ -8,7 +8,7 @@
 	<h1>Edit project</h1>
 	<div>
 		<form th:object="${band}" th:action="@{../save}" action="#" method="post">
-		<input type="hidden" th:field="*{bandId}" class="form-control"/>
+		<input type="hidden" th:field="*{id}" class="form-control"/>
 		  	<label for="bandName">Name of the project</label>
 			<input type="text" id="bandName" th:field="*{bandName}" />
 			<div style="clear: both; display: block; height: 10px;"></div>

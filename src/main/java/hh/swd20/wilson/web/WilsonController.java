@@ -53,9 +53,9 @@ public class WilsonController {
 	       return "bandlist"; 
 	    }
 	 
-	 @RequestMapping(value="/albumlist")
-	 public String albumList(Model model) {
-		 model.addAttribute("albums", arepository.findAll());
+	 @RequestMapping(value="/albumlist/{id}")
+	 public String albumList(@PathVariable("id")Long id, Model model) {
+		 model.addAttribute("albums", arepository.findByBand(id));
 		 return "albumlist";
 	 }
 	 
@@ -73,12 +73,7 @@ public class WilsonController {
 	    } 
 	 
 	 
- // REST add new song
-	 
-	 @RequestMapping (value="/addsong", method=RequestMethod.POST)
-	    public @ResponseBody Song addNewSongRest(@RequestBody Song song) {
-	    	return srepository.save(song);
-	    }
+ 
 	 
 	 
 	 // add new song
@@ -91,7 +86,7 @@ public class WilsonController {
 	// delete song
 	 
 		 @PreAuthorize("hasAuthority('ADMIN')")
-		  @RequestMapping(value = "/delete/{songId}", method = RequestMethod.GET)
+		  @RequestMapping(value = "/delete/song/{songId}", method = RequestMethod.GET)
 		    public String deleteSong(@PathVariable("songId") Long songId, Model model) {
 		    	srepository.deleteById(songId);
 		        return "redirect:../songlist";
@@ -104,12 +99,7 @@ public class WilsonController {
 	        return (List<Album>) arepository.findAll();
 	    } 
 	 
-	 // REST add new album
-	 
-	 @RequestMapping (value="/addalbum", method=RequestMethod.POST)
-	    public @ResponseBody Album addNewAlbumRest(@RequestBody Album album) {
-	    	return arepository.save(album);
-	    }
+
 	 
 	 // add album
 	 
@@ -122,20 +112,13 @@ public class WilsonController {
 	 
 	 // delete album
 	 
-	 @PreAuthorize("hasAuthority('ADMIN')")
-	  @RequestMapping(value = "/delete/{albumId}", method = RequestMethod.GET)
-	    public String deleteAlbum(@PathVariable("albumId") Long albumId, Model model) {
+	  @RequestMapping(value = "/delete/album/{id}", method = RequestMethod.GET)
+	    public String deleteAlbum(@PathVariable("id") Long albumId, Model model) {
 	    	arepository.deleteById(albumId);
 	        return "redirect:../albumlist";
 	 }
 	 
-	 // find all bands
-	 
-	    @RequestMapping(value="/bandlist")
-	    public String findAllBands(Model model) {	
-	        model.addAttribute("bands", brepository.findAll());
-	        return "bandlist"; 
-	    }
+	
 
 	 
 	// REST Find all bands
@@ -147,8 +130,8 @@ public class WilsonController {
 	    //REST get band by id
 	    
 	    @RequestMapping(value="/bands/{id}", method = RequestMethod.GET)
-	    public @ResponseBody Optional<Band> findBandRest(@PathVariable("id") Long bandId){
-	    	return brepository.findById(bandId);
+	    public @ResponseBody Optional<Band> findBandRest(@PathVariable("id") Long id){
+	    	return brepository.findById(id);
 	    }
 	 
 	    //REST add new band
@@ -176,19 +159,17 @@ public class WilsonController {
 	  
 	  //delete band
 	  
-	  @PreAuthorize("hasAuthority('ADMIN')")
 	  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	    public String deleteBand(@PathVariable("id") Long bandId, Model model) {
-	    	brepository.deleteById(bandId);
+	    public String deleteBand(@PathVariable("id") Long id, Model model) {
+	    	brepository.deleteById(id);
 	        return "redirect:../bandlist";
 	        
 	   }
 	  
 	  //edit band
 	  @RequestMapping (value="/editband/{id}")
-	  public String editBand (@PathVariable("id") Long bandId, Model model) {
-	  model.addAttribute("band", brepository.findById(bandId));
-	  model.addAttribute("genres", grepository.findAll());
+	  public String editBand (@PathVariable("id") Long id, Model model) {
+	  model.addAttribute("band", brepository.findById(id));
 	  return "editband";
 	  }
 	  
