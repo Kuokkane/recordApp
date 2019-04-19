@@ -53,9 +53,14 @@ public class WilsonApplication {
 			
 			arepository.save(new Album("Prayer for the soul", "Simon \"Si\" Vockings ", brepository.findByBandName("Steven Wilson").get(0)));
 			arepository.save(new Album("The Incident", "Richard Barbieri, Colin Edwin, Gavin Harrison", brepository.findByBandName("Porcupine Tree").get(0)));
-			
+			arepository.save(new Album("Sky Moves Sideways", "Gavin Harrison", brepository.findByBandName("Altamont").get(0)));
+
 			srepository.save(new Song ("Raven That Refused To Sing", 7.49, arepository.findByTitle("The Incident").get(0)));
 			srepository.save(new Song ("I Drive the Hearse", 6.41, arepository.findByTitle("The Incident").get(0)));
+			srepository.save(new Song ("Stars die", 3.41, arepository.findByTitle("Prayer for the soul").get(0)));
+			srepository.save(new Song ("When the water breaks", 11.41, arepository.findByTitle("Sky Moves Sideways").get(0)));
+
+
 			
 			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
 			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
