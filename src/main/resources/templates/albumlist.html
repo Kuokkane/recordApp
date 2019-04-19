@@ -23,11 +23,11 @@
 		    <th sec:authorize="hasRole('USER')"> </th>
 		</tr>  
     	<tr th:each = "album : ${albums}">
-    		<td th:text="${album.title}"></td>
+    		<td> <a th:text="${album.title}" th:href="@{|/songlist/${album.albumId}|}"></a></td>
     		<td th:text="${album.collaborator}"></td>
     	
     	
-			<td sec:authorize="hasAuthority  ('USER')"><a th:href="@{/delete/{id}(id=${album.albumId})}" class="btn btn-xs btn-danger">Delete</a></td>  			
+			<td sec:authorize="hasAuthority  ('USER')"><a th:href="@{/delete/{id}(id=${album.albumId})}" class="btn btn-danger">Delete</a></td>  			
 			<td><a th:href="@{/editalbum/{id}(id=${album.albumId})}">Edit</a></td>      		
     	</tr>
      </table>

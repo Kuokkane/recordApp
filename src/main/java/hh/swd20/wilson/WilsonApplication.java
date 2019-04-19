@@ -67,6 +67,11 @@ public class WilsonApplication {
 			for (Band band : brepository.findAll()) {
 				log.info(band.toString());
 			}
+			
+			log.info("Fetch all albums");
+			for (Album album : arepository.findAll()) {
+				log.info(album.toString());
+			}
 		};
 	
 

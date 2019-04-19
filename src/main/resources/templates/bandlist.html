@@ -27,7 +27,7 @@
 		   <th sec:authorize="hasRole('ADMIN')"> </th>
 		</tr>  
     	<tr th:each = "band : ${bands}">
-    		<td> <a th:text="${band.bandName}" th:href="@{/albumlist/{id}(id=@{band.id})}"></a></td>
+    		<td> <a th:text="${band.bandName}" th:href="@{|/albumlist/${band.id}|}"></a></td>
     		<td th:text="${band.memberCount}"></td>
     		<td th:text="${band.foundYear}"></td>
     		<td th:text="${band.endYear}"></td>

@@ -9,6 +9,8 @@ public interface AlbumRepository extends CrudRepository<Album, Long> {
 	
 	List<Album> findByTitle(String title);
 	
-	List<Album> findByBand(Long id);
+	List<Album> findByBand(Band band);
+	
+	List<Album> findByAlbumId(Long id);
 
 }

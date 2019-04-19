@@ -54,16 +54,29 @@ public class WilsonController {
 	    }
 	 
 	 @RequestMapping(value="/albumlist/{id}")
-	 public String albumList(@PathVariable("id")Long id, Model model) {
-		 model.addAttribute("albums", arepository.findByBand(id));
+	 public String albumList(@PathVariable String id, Model model) {
+		 Long bandId = Long.parseLong(id);
+		 Optional<Band> band = brepository.findById(bandId);
+		 model.addAttribute("albums", arepository.findByBand(band.get()));
 		 return "albumlist";
 	 }
 	 
-	 @RequestMapping(value="/songlist")
-	 public String songList(Model model) {
-		 model.addAttribute("songs", srepository.findAll());
+	 @RequestMapping(value="/songlist/{id}")
+	 public String songList(@PathVariable String id, Model model) {
+		 Long albumId = Long.parseLong(id);
+		 
+		 List<Album> album = arepository.findByAlbumId(albumId);
+		 
+		 model.addAttribute("songs", srepository.findByAlbum(album.get(0)));
+
 		 return "songlist";
 	 }
+	 
+//	 @RequestMapping(value="/songlist")
+//	 public String songList(Model model) {
+//		 model.addAttribute("songs", srepository.findAll());
+//		 return "songlist";
+//	 }
 	 
  // REST Find all songs
 	 
@@ -87,9 +100,11 @@ public class WilsonController {
 	 
 		 @PreAuthorize("hasAuthority('ADMIN')")
 		  @RequestMapping(value = "/delete/song/{songId}", method = RequestMethod.GET)
-		    public String deleteSong(@PathVariable("songId") Long songId, Model model) {
-		    	srepository.deleteById(songId);
-		        return "redirect:../songlist";
+		    public String deleteSong(@PathVariable("songId") String songId, Model model) {
+			 Long songId2 = Long.parseLong(songId);
+			 List<Song> song = srepository.findBySongId(songId2);
+		    srepository.delete(song.get(0));
+		        return "redirect:/bandlist";
 		 }
 	 
 	 // REST Find all albums

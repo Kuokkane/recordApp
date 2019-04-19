@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 
@@ -28,16 +29,9 @@ public class Band {
 	private List<Album> albums;
 //	@OneToMany
 //	@JsonIgnore
-//	@JoinColumn(name = "albumId")
 //	private Album album;
 	
 	public Band() {
-		this.id = 0L;
-		this.bandName = null;
-		this.memberCount = 0;
-		this.foundYear = 0;
-		this.labelCompany = null;
-		this.endYear = 0;
 	}
 			
 			

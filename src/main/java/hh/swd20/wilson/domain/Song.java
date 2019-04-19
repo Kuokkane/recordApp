@@ -70,7 +70,10 @@ public class Song {
 	
 	@Override
 	public String toString() {
-		return "Song [songId=" + songId + ", songName=" + songName + ", songLength=" + songLength + "]";
+		if (this.album != null)
+			return "Song [songId=" + songId + ", songName=" + songName + ", songLength=" + songLength + ", album = "+ this.getAlbum() + "]";
+			else 
+				return "Song [songId=" + songId + ", songName=" + songName + ", songLength=" + "]";
 	}
 	
 	
