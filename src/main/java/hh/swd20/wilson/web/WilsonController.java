@@ -85,8 +85,7 @@ public class WilsonController {
 	        return (List<Song>) srepository.findAll();
 	    } 
 	 
-	 
- 
+	  
 	 
 	 
 	 // add new song
@@ -189,7 +188,13 @@ public class WilsonController {
 	  }
 	  
 	  
-
+	  //edit album
+	  @RequestMapping (value="/editalbum/{albumId}")
+	  public String editAlbum (@PathVariable("albumId") Long albumId, Model model) {
+	  model.addAttribute("album", arepository.findByAlbumId(albumId));
+	  return "editalbum";
+	  }
+	 
 	  
 }
 
